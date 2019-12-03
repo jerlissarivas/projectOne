@@ -18,5 +18,11 @@ window.addEventListener("load", () => {
         ctx.drawImage(mainChar, 0, 525, 65, 65)
     }
 
-
+    const brick = new Image();
+    brick.src =  "./images/cartoon-brick-wall-6.png"
+    brick.onload = function(){
+        ctx.drawImage(brick, 0, 525, 200, 200)
+    }
+    
+    
 })
