@@ -4,25 +4,16 @@ window.addEventListener("load", () => {
     const ctx = myCanvas.getContext("2d");
     myCanvas.width = 1440;
     myCanvas.height = 650;
-    
-    const background = new Image();
-    background.src = "./images/background1"
-    // Make sure the image is loaded first otherwise nothing will draw.
-    background.onload = function(){
-        ctx.drawImage(background,0,0)
+
+    function drawImg(name, pathToImg, x, y, w, h){
+        name = new Image();
+        name.src = pathToImg;
+        name.onload = () => {
+            ctx.drawImage(name, x, y, w, h)
+        }
     }
 
-    const mainChar = new Image();
-    mainChar.src =  "./images/Mario_NSMB2.png"
-    mainChar.onload = function(){
-        ctx.drawImage(mainChar, 0, 525, 65, 65)
-    }
+    drawImg("mainChar", "./images/Mario_NSMB2.png", 0, 325, 65, 65)
+    drawImg("brick", "./images/cartoon-brick-wall-6.png", 10, 525, 200, 200)
 
-    const brick = new Image();
-    brick.src =  "./images/cartoon-brick-wall-6.png"
-    brick.onload = function(){
-        ctx.drawImage(brick, 0, 525, 200, 200)
-    }
-    
-    
 })
