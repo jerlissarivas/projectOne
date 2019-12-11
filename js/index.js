@@ -38,7 +38,7 @@ function drawEverything() {
         }
         if (obstacleX === 0) {
                 score++;
-                console.log(score)
+                document.getElementById('score').innerHTML = "Score: "+ score;
             }
         }
         
@@ -56,7 +56,7 @@ function drawingLoop() {
     // if (isOver === false) {
         requestAnimationFrame(() => drawingLoop());
     // }  
-    // drawingLoop()
+
 };
 
 document.onkeydown = function (event) {
@@ -86,9 +86,21 @@ document.onkeydown = function (event) {
     }
 };
 
+function checkStatus(){
+    console.log("Check Status being called")
+    if(score < 0){
+        alert('you lose');
+    } 
+
+    if(score > 3){
+        alert('you win');
+    }
+}
+
+
 function checkCollision(mainCharX, mainCharY, obstacleX, obstacleY){
     // supermanY + superman-height >= fireballY
-return mainCharY >= obstacleY + 25
+    return mainCharY >= obstacleY + 25
     // supermanY <= fireballY + fireball-height
     // && mainCharY <= obstacleY
     // // supermanX + superman-width >= fireballX
@@ -98,3 +110,4 @@ return mainCharY >= obstacleY + 25
 };
 
 drawingLoop();
+checkStatus();

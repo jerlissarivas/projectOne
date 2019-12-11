@@ -4,4 +4,10 @@ canvas {
     background-position: bottom;
     background-size: cover;
     margin: 10px;
+    margin-bottom: 1px;
+}
+
+#score {
+    color: red;
+    text-align: center;
 }
