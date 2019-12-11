@@ -27,10 +27,19 @@ function drawEverything() {
     drawImg(mainChar, "./images/Mario_NSMB2.png", mainCharX, mainCharY, 65, 65);
     drawImg(obstacleImg, "./images/bomb-clipart.png", obstacleX, obstacleY, 60, 60);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 150, 375, 75, 75);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 205, 375, 75, 75);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 260, 375, 75, 75);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 315, 375, 75, 75);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 370, 375, 75, 75);
+    drawImg('coin', "./images/a726-512.png", 200, 368, 95, 95);
+    drawImg('brick', './images/cartoon-brick-wall-6.png', 275, 375, 75, 75);
+    drawImg('coin', "./images/a726-512.png", 500, 368, 95, 95);
+    drawImg('coin', "./images/a726-512.png", 560, 368, 95, 95);
+    drawImg('coin', "./images/a726-512.png", 620, 368, 95, 95);
+    drawImg('brick', './images/cartoon-brick-wall-6.png', 700, 375, 75, 75);
+    drawImg('brick', './images/cartoon-brick-wall-6.png', 755, 375, 75, 75);
+    drawImg('coin', "./images/a726-512.png", 810, 368, 95, 95);
+    drawImg('brick', './images/cartoon-brick-wall-6.png', 1000, 375, 75, 75);
+    drawImg('brick', './images/cartoon-brick-wall-6.png', 1055, 375, 75, 75);
+    // drawImg('brick', './images/cartoon-brick-wall-6.png', 755, 375, 75, 75);
+
+    
 
     if (checkCollision(mainCharX, mainCharY, obstacleX, obstacleY)) {
             console.log('CRASH!!!!!!');
