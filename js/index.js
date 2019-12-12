@@ -27,29 +27,35 @@ function drawEverything() {
     drawImg(mainChar, "./images/Mario_NSMB2.png", mainCharX, mainCharY, 65, 65);
     drawImg(obstacleImg, "./images/bomb-clipart.png", obstacleX, obstacleY, 60, 60);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 150, 375, 75, 75);
-    drawImg('coin', "./images/a726-512.png", 200, 368, 95, 95);
+    drawImg('coin', "./images/bitcoin.png", 217, 385, 60, 60);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 275, 375, 75, 75);
-    drawImg('coin', "./images/a726-512.png", 500, 368, 95, 95);
-    drawImg('coin', "./images/a726-512.png", 560, 368, 95, 95);
-    drawImg('coin', "./images/a726-512.png", 620, 368, 95, 95);
+    drawImg('coin', "./images/bitcoin.png", 440, 385, 60, 60);
+    drawImg('coin', "./images/bitcoin.png", 500, 385, 60, 60);
+    drawImg('coin', "./images/bitcoin.png", 560, 385, 60, 60);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 700, 375, 75, 75);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 755, 375, 75, 75);
-    drawImg('coin', "./images/a726-512.png", 810, 368, 95, 95);
+    drawImg('coin', "./images/bitcoin.png", 822, 385, 60, 60);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 1000, 375, 75, 75);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 1055, 375, 75, 75);
     // drawImg('brick', './images/cartoon-brick-wall-6.png', 755, 375, 75, 75);
-
     
-
+    
+    
     if (checkCollision(mainCharX, mainCharY, obstacleX, obstacleY)) {
-            console.log('CRASH!!!!!!');
-            gameOver();
-        }
-        if (obstacleX === 0) {
-                score++;
-                document.getElementById('score').innerHTML = "Score: "+ score;
-            }
-        }
+        alert("GAME OVER!");
+        gameOver();
+    }
+    if (obstacleX === 0) {
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+    }
+}
+// let marioBottom = mainCharY + 65
+// let marioRight = mainCharX + 65
+
+//     if (checkContact(mainCharY, 375)) {
+//         alert("YOU WON!");
+//         }
         
 function drawingLoop() {
     ctx.clearRect(0, 0, 1400, 650);
@@ -107,15 +113,23 @@ function checkStatus(){
 }
 
 
-function checkCollision(mainCharX, mainCharY, obstacleX, obstacleY){
-    // supermanY + superman-height >= fireballY
-    return mainCharY >= obstacleY + 25
-    // supermanY <= fireballY + fireball-height
-    // && mainCharY <= obstacleY
-    // // supermanX + superman-width >= fireballX
-    // && mainCharX >= obstacleX
-    // // supermanX <= fireballX + fireball-width
-    // && mainCharX <= obstacleX;
+// function checkContact(char, object){
+//     console.log("checkContact is being passed!")
+// return char.X < B.X + B.Width
+//     && char.X + A.Width > B.X
+//     && char < B.Y + B.Height
+//     && char + A.Height > B.Y
+// };
+
+function checkCollision(obj1x, obj1y, obj2x, obj2y){
+    // mainCharY + mainChar-height >= obstacleY
+return obj1y + 65  >= obj2y
+    // mainCharY <= obstacleY + obstacle-height
+    && obj1y <= obj2y + 60
+    // mainCharX + mainChar-width >= obstacleX
+    && obj1x + 65 - 10 >= obj2x
+    // mainCharX <= obstacleX + obstacle-width
+    && obj1x <= obj2x + 60;
 };
 
 drawingLoop();
