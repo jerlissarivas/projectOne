@@ -23,9 +23,17 @@ function drawImg(name, pathToImg, x, y, w, h) {
         ctx.drawImage(name, x, y, w, h);
 }
 function drawEverything() {
+
+    ctx.fillStyle = "white";
+    ctx.font = "20px Arial";
+
+    ctx.fillText("Move your player with the arrow keys or W A S D keys.", 10, 40);
+    ctx.fillText("Jump over the bomb collect the bricks and coins.", 10, 60);
+
+
     drawImg(mainChar, "./images/Mario_NSMB2.png", mainCharX, mainCharY, 65, 65);
     drawImg(obstacleImg, "./images/bomb-clipart.png", obstacleX, obstacleY, 55, 55);
-    let brick1 = drawImg('brick', './images/cartoon-brick-wall-6.png', 150, 375, 75, 75);
+    drawImg('brick', './images/cartoon-brick-wall-6.png', 150, 375, 75, 75);
     drawImg('coin', "./images/bitcoin.png", 217, 385, 60, 60);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 275, 375, 75, 75);
     drawImg('coin', "./images/bitcoin.png", 440, 385, 60, 60);
@@ -41,64 +49,65 @@ function drawEverything() {
     
     if (checkCollision(mainCharX, mainCharY, obstacleX, obstacleY)) {
         // alert("GAME OVER!");
-        gameOver();
+        // gameOver();
     }
 
     if (checkContact(mainCharY, 375, mainCharX, 150)) {
-        // brick1.remove();
         // drawImg('brick', './images/166-1660430_brick-background-png-brick-wall-background-pattern-png.png', 150, 375, 75, 75);
-        // return score++;
-        // document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
+
     }
     if (checkContact(mainCharY, 385, mainCharX, 217)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
     if (checkContact(mainCharY, 375, mainCharX, 275)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
     if (checkContact(mainCharY, 385, mainCharX, 440)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
     if (checkContact(mainCharY, 385, mainCharX, 500)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
     if (checkContact(mainCharY, 385, mainCharX, 560)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
     if (checkContact(mainCharY, 375, mainCharX, 700)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
     if (checkContact(mainCharY, 375, mainCharX, 755)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
     if (checkContact(mainCharY, 385, mainCharX, 822)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
     if (checkContact(mainCharY, 375, mainCharX, 1000)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
     if (checkContact(mainCharY, 375, mainCharX, 1055)) {
-        // alert("contact");
-        // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+        mainCharY = 525;
     }
 
     if (obstacleX === 0){
@@ -139,11 +148,11 @@ document.onkeydown = function (event) {
             if (mainCharY >= 450) mainCharY -= 25;
             break;
         case 39: // RIGHT
-        case 83:
+        case 68:
             if (mainCharX <= 1320) mainCharX += 25;
             break;
         case 40: // DOWN
-        case 68:
+        case 83:
             if (mainCharY <= 515) mainCharY += 25;
             break;
         default:
