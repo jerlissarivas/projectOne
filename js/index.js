@@ -49,7 +49,7 @@ function drawEverything() {
     
     if (checkCollision(mainCharX, mainCharY, obstacleX, obstacleY)) {
         // alert("GAME OVER!");
-        // gameOver();
+        gameOver();
     }
 
     if (checkContact(mainCharY, 375, mainCharX, 150)) {
