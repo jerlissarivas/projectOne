@@ -7,7 +7,7 @@ let score = 0;
 let isOver = false;
 
 const mainChar = new Image();
-mainChar.src = './images/Mario_NSMB2.png';
+mainChar.src = './images/Santa-Logo.png/';
 let mainCharX = 0;
 let mainCharY = 525;
 
@@ -31,19 +31,19 @@ function drawEverything() {
     ctx.fillText("Jump over the bomb collect the bricks and coins.", 10, 60);
 
 
-    drawImg(mainChar, "./images/Mario_NSMB2.png", mainCharX, mainCharY, 65, 65);
-    drawImg(obstacleImg, "./images/bomb-clipart.png", obstacleX, obstacleY, 55, 55);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 150, 375, 75, 75);
-    drawImg('coin', "./images/bitcoin.png", 217, 385, 60, 60);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 275, 375, 75, 75);
-    drawImg('coin', "./images/bitcoin.png", 440, 385, 60, 60);
-    drawImg('coin', "./images/bitcoin.png", 500, 385, 60, 60);
-    drawImg('coin', "./images/bitcoin.png", 560, 385, 60, 60);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 700, 375, 75, 75);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 755, 375, 75, 75);
-    drawImg('coin', "./images/bitcoin.png", 822, 385, 60, 60);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 1000, 375, 75, 75);
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 1055, 375, 75, 75);
+    drawImg(mainChar, "./images/Santa-Logo.png", mainCharX, mainCharY, 65, 65);
+    drawImg(obstacleImg, "./images/coal.png", obstacleX, obstacleY, 55, 55);
+    drawImg('brick', './images/gift2.png', 150, 385, 60, 60);
+    drawImg('coin', "./images/gift2.png", 210, 385, 60, 60);
+    drawImg('brick', './images/gift2.png', 270, 385, 60, 60);
+    drawImg('coin', "./images/gift2.png", 440, 385, 60, 60);
+    drawImg('coin', "./images/gift2.png", 500, 385, 60, 60);
+    drawImg('coin', "./images/gift2.png", 560, 385, 60, 60);
+    drawImg('brick', './images/gift2.png', 700, 385, 60, 60);
+    drawImg('brick', './images/gift2.png', 760, 385, 60, 60);
+    drawImg('coin', "./images/gift2.png", 820, 385, 60, 60);
+    drawImg('brick', './images/gift2.png', 1000, 385, 60, 60);
+    drawImg('brick', './images/gift2.png', 1060, 385, 60, 60);
 
     
     
@@ -59,12 +59,12 @@ function drawEverything() {
         mainCharY = 525;
 
     }
-    if (checkContact(mainCharY, 385, mainCharX, 217)) {
+    if (checkContact(mainCharY, 385, mainCharX, 210)) {
         score++;
         document.getElementById('score').innerHTML = "Score: "+ score;
         mainCharY = 525;
     }
-    if (checkContact(mainCharY, 375, mainCharX, 275)) {
+    if (checkContact(mainCharY, 375, mainCharX, 270)) {
         score++;
         document.getElementById('score').innerHTML = "Score: "+ score;
         mainCharY = 525;
@@ -89,12 +89,12 @@ function drawEverything() {
         document.getElementById('score').innerHTML = "Score: "+ score;
         mainCharY = 525;
     }
-    if (checkContact(mainCharY, 375, mainCharX, 755)) {
+    if (checkContact(mainCharY, 375, mainCharX, 760)) {
         score++;
         document.getElementById('score').innerHTML = "Score: "+ score;
         mainCharY = 525;
     }
-    if (checkContact(mainCharY, 385, mainCharX, 822)) {
+    if (checkContact(mainCharY, 385, mainCharX, 820)) {
         score++;
         document.getElementById('score').innerHTML = "Score: "+ score;
         mainCharY = 525;
@@ -104,7 +104,7 @@ function drawEverything() {
         document.getElementById('score').innerHTML = "Score: "+ score;
         mainCharY = 525;
     }
-    if (checkContact(mainCharY, 375, mainCharX, 1055)) {
+    if (checkContact(mainCharY, 375, mainCharX, 1060)) {
         score++;
         document.getElementById('score').innerHTML = "Score: "+ score;
         mainCharY = 525;
@@ -145,7 +145,7 @@ document.onkeydown = function (event) {
             break;
         case 38: // UP
         case 87:
-            if (mainCharY >= 450) mainCharY -= 25;
+            if (mainCharY >= 450) mainCharY -= 100;
             break;
         case 39: // RIGHT
         case 68:
@@ -153,7 +153,7 @@ document.onkeydown = function (event) {
             break;
         case 40: // DOWN
         case 83:
-            if (mainCharY <= 515) mainCharY += 25;
+            if (mainCharY <= 515) mainCharY += 100;
             break;
         default:
             console.log("They key codes are not working", event.keyCode);
