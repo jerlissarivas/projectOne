@@ -11,20 +11,11 @@ mainChar.src = './images/Mario_NSMB2.png';
 let mainCharX = 0;
 let mainCharY = 525;
 
+
 const obstacleImg = new Image();
 obstacleImg.src = './images/bomb-clipart.png';
 let obstacleX = 1340;
 let obstacleY = 545;
-
-// const brickImg = new Image();
-// brickImg.src = './images/cartoon-brick-wall-6.png';
-// let brickX = 1340;
-// let brickY = Math.floor(Math.random() * 600);
-
-// const coinImg = new Image();
-// coinImg.src = './images/bitcoin.png';
-// let coinX = 1340;
-// let coinY = Math.floor(Math.random() * 600);
 
 function drawImg(name, pathToImg, x, y, w, h) {
     name = new Image();
@@ -34,10 +25,7 @@ function drawImg(name, pathToImg, x, y, w, h) {
 function drawEverything() {
     drawImg(mainChar, "./images/Mario_NSMB2.png", mainCharX, mainCharY, 65, 65);
     drawImg(obstacleImg, "./images/bomb-clipart.png", obstacleX, obstacleY, 55, 55);
-    // drawImg(brickImg, "./images/cartoon-brick-wall-6.png", brickX, brickY, 75, 75);
-    // drawImg(coinImg, "./images/bitcoin.png", coinX, coinY, 60, 60);
-
-    drawImg('brick', './images/cartoon-brick-wall-6.png', 150, 375, 75, 75);
+    let brick1 = drawImg('brick', './images/cartoon-brick-wall-6.png', 150, 375, 75, 75);
     drawImg('coin', "./images/bitcoin.png", 217, 385, 60, 60);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 275, 375, 75, 75);
     drawImg('coin', "./images/bitcoin.png", 440, 385, 60, 60);
@@ -48,29 +36,19 @@ function drawEverything() {
     drawImg('coin', "./images/bitcoin.png", 822, 385, 60, 60);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 1000, 375, 75, 75);
     drawImg('brick', './images/cartoon-brick-wall-6.png', 1055, 375, 75, 75);
-    
-    
-    
-    // if (checkCollision(mainCharX, mainCharY, obstacleX, obstacleY)) {
-    //     alert("GAME OVER!");
-    //     // gameOver();
-    // }
 
-    // if (checkCollision(mainCharX, mainCharY, brickX, brickY)) {
-    //     alert("GAME OVER!");
-    //     // gameOver();
-    // }
-
-    // if (checkCollision(mainCharX, mainCharY, coinX, coinY)) {
-    //     // alert("GAME OVER!");
-    //     // return score++;
-    //     document.getElementById('score').innerHTML = "Score: "+ score++;
-    // }
+    
+    
+    if (checkCollision(mainCharX, mainCharY, obstacleX, obstacleY)) {
+        // alert("GAME OVER!");
+        gameOver();
+    }
 
     if (checkContact(mainCharY, 375, mainCharX, 150)) {
-        // alert("contact");
+        // brick1.remove();
+        // drawImg('brick', './images/166-1660430_brick-background-png-brick-wall-background-pattern-png.png', 150, 375, 75, 75);
         // return score++;
-        document.getElementById('score').innerHTML = "Score: "+ score++;
+        // document.getElementById('score').innerHTML = "Score: "+ score++;
     }
     if (checkContact(mainCharY, 385, mainCharX, 217)) {
         // alert("contact");
@@ -123,15 +101,11 @@ function drawEverything() {
         document.getElementById('score').innerHTML = "Score: "+ score++;
     }
 
-    // if (obstacleX === 0){
-    //     score++;
-    //     document.getElementById('score').innerHTML = "Score: "+ score;
-    // }
+    if (obstacleX === 0){
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+ score;
+    }
 
-    // if (brickX === 0){
-    //     score++;
-    //     document.getElementById('score').innerHTML = "Score: "+ score;
-    // }
 }
         
 function drawingLoop() {
@@ -147,16 +121,13 @@ function drawingLoop() {
 
     drawEverything();
     // requestAnimationFrame(() => drawingLoop());
-    // if (isOver === false) {
+    if (isOver === false) {
         requestAnimationFrame(() => drawingLoop());
-    // }  
+    }  
 
 };
 
 document.onkeydown = function (event) {
-
-    // console.log("event: ", event.keyCode, mainCharX, mainCharY)
-    // console.log(event);
 
     switch(event.keyCode){
         case 37: // LEFT
@@ -180,16 +151,16 @@ document.onkeydown = function (event) {
     }
 };
 
-// function checkStatus(){
-//     console.log("Check Status being called")
-//     if(score < 0){
-//         alert('you lose');
-//     } 
+function checkStatus(){
+    console.log("Check Status being called")
+    if(score < 0){
+        alert('you lose');
+    } 
 
-//     if(score > 3){
-//         alert('you win');
-//     }
-// }
+    if(score > 3){
+        alert('you win');
+    }
+}
 
 
 function checkContact(mainCharY, obstacleBottom, mainCharX, obstacleLeft){
@@ -213,6 +184,17 @@ return obj1y + 65  >= obj2y
     && obj1x + 65 - 10 >= obj2x
     // mainCharX <= obstacleX + obstacle-width
     && obj1x <= obj2x + 60;
+};
+
+
+function gameOver(){
+    ctx.clearRect(0, 0, 1400, 650);
+
+    isOver = true;
+
+    ctx.font = "70px bold Arial";
+    ctx.fillStyle = "red";
+    ctx.fillText("GAME OVER!", 450, 350);
 };
 
 drawingLoop();
