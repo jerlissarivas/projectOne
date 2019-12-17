@@ -11,6 +11,10 @@ mainChar.src = './images/Santa-Logo.png/';
 let mainCharX = 0;
 let mainCharY = 525;
 
+let giftsArray = [];
+const giftsXPositions = [150, 210, 270, 440, 500, 560, 700, 760, 820, 1000, 1060]
+
+addGifts();
 
 const obstacleImg = new Image();
 obstacleImg.src = './images/bomb-clipart.png';
@@ -22,6 +26,14 @@ function drawImg(name, pathToImg, x, y, w, h) {
     name.src = pathToImg;
         ctx.drawImage(name, x, y, w, h);
 }
+
+function addGifts() {
+    for(let i = 0; i < giftsXPositions.length; i++) {
+        giftsArray.push(new Gift(giftsXPositions[i]))
+        console.log("gifts array ==> ==> ", {giftsArray, Gift});
+    }
+};
+
 function drawEverything() {
 
     ctx.fillStyle = "white";
@@ -30,20 +42,27 @@ function drawEverything() {
     ctx.fillText("Move your player with the arrow keys or W A S D keys.", 10, 40);
     ctx.fillText("Jump over the bomb collect the bricks and coins.", 10, 60);
 
+    if(giftsArray.length === 0) {
+        addGifts();
+    }
+
 
     drawImg(mainChar, "./images/Santa-Logo.png", mainCharX, mainCharY, 65, 65);
     drawImg(obstacleImg, "./images/coal.png", obstacleX, obstacleY, 55, 55);
-    drawImg('brick', './images/gift2.png', 150, 385, 60, 60);
-    drawImg('coin', "./images/gift2.png", 210, 385, 60, 60);
-    drawImg('brick', './images/gift2.png', 270, 385, 60, 60);
-    drawImg('coin', "./images/gift2.png", 440, 385, 60, 60);
-    drawImg('coin', "./images/gift2.png", 500, 385, 60, 60);
-    drawImg('coin', "./images/gift2.png", 560, 385, 60, 60);
-    drawImg('brick', './images/gift2.png', 700, 385, 60, 60);
-    drawImg('brick', './images/gift2.png', 760, 385, 60, 60);
-    drawImg('coin', "./images/gift2.png", 820, 385, 60, 60);
-    drawImg('brick', './images/gift2.png', 1000, 385, 60, 60);
-    drawImg('brick', './images/gift2.png', 1060, 385, 60, 60);
+    for(let i = 0; i < giftsArray.length; i++) {
+        giftsArray[i].draw();
+    }
+    // drawImg('brick', './images/gift2.png', 150, 385, 60, 60);
+    // drawImg('coin', "./images/gift2.png", 210, 385, 60, 60);
+    // drawImg('brick', './images/gift2.png', 270, 385, 60, 60);
+    // drawImg('coin', "./images/gift2.png", 440, 385, 60, 60);
+    // drawImg('coin', "./images/gift2.png", 500, 385, 60, 60);
+    // drawImg('coin', "./images/gift2.png", 560, 385, 60, 60);
+    // drawImg('brick', './images/gift2.png', 700, 385, 60, 60);
+    // drawImg('brick', './images/gift2.png', 760, 385, 60, 60);
+    // drawImg('coin', "./images/gift2.png", 820, 385, 60, 60);
+    // drawImg('brick', './images/gift2.png', 1000, 385, 60, 60);
+    // drawImg('brick', './images/gift2.png', 1060, 385, 60, 60);
 
     
     
@@ -51,64 +70,60 @@ function drawEverything() {
         // alert("GAME OVER!");
         gameOver();
     }
+    for(let i = 0; i < giftsArray.length; i++) {
+        if (checkContact(mainCharY, giftsArray[i].y, mainCharX, giftsArray[i].x)) {
+            // drawImg('brick', './images/166-1660430_brick-background-png-brick-wall-background-pattern-png.png', 150, 375, 75, 75);
+            score++;
+            document.getElementById('score').innerHTML = "Score: "+ score;
+            giftsArray.splice(i, 1);
+        }
+    }
 
-    if (checkContact(mainCharY, 375, mainCharX, 150)) {
-        // drawImg('brick', './images/166-1660430_brick-background-png-brick-wall-background-pattern-png.png', 150, 375, 75, 75);
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-
-    }
-    if (checkContact(mainCharY, 385, mainCharX, 210)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
-    if (checkContact(mainCharY, 375, mainCharX, 270)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
-    if (checkContact(mainCharY, 385, mainCharX, 440)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
-    if (checkContact(mainCharY, 385, mainCharX, 500)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
-    if (checkContact(mainCharY, 385, mainCharX, 560)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
-    if (checkContact(mainCharY, 375, mainCharX, 700)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
-    if (checkContact(mainCharY, 375, mainCharX, 760)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
-    if (checkContact(mainCharY, 385, mainCharX, 820)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
-    if (checkContact(mainCharY, 375, mainCharX, 1000)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
-    if (checkContact(mainCharY, 375, mainCharX, 1060)) {
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+ score;
-        mainCharY = 525;
-    }
+    // if (checkContact(mainCharY, 375, mainCharX, 150)) {
+    //     // drawImg('brick', './images/166-1660430_brick-background-png-brick-wall-background-pattern-png.png', 150, 375, 75, 75);
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 385, mainCharX, 210)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 375, mainCharX, 270)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 385, mainCharX, 440)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 385, mainCharX, 500)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 385, mainCharX, 560)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 375, mainCharX, 700)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 375, mainCharX, 760)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 385, mainCharX, 820)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 375, mainCharX, 1000)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
+    // if (checkContact(mainCharY, 375, mainCharX, 1060)) {
+    //     score++;
+    //     document.getElementById('score').innerHTML = "Score: "+ score;
+    // }
 
     if (obstacleX === 0){
         score++;
@@ -116,25 +131,38 @@ function drawEverything() {
     }
 
 }
+
         
 function drawingLoop() {
     ctx.clearRect(0, 0, 1400, 650);
 
     obstacleX -= 5;
-   
+    
     if (obstacleX < -70) {
         obstacleX = 1340;
         // obstacleY = Math.floor(Math.random() * 600);
     }
-
-
+    
+    
     drawEverything();
-    // requestAnimationFrame(() => drawingLoop());
+    // this is so that santa has gravitational pull after a jump
+    if(mainCharY < 525) {
+        mainCharY += 3;
+    }
+
     if (isOver === false) {
         requestAnimationFrame(() => drawingLoop());
     }  
-
+    checkStatus();
+    
 };
+
+function checkStatus(){
+console.log("Check Status being called")
+    if(score >= 15){
+    youWin();
+    }
+}
 
 document.onkeydown = function (event) {
 
@@ -145,7 +173,7 @@ document.onkeydown = function (event) {
             break;
         case 38: // UP
         case 87:
-            if (mainCharY >= 450) mainCharY -= 100;
+            if (mainCharY >= 515) mainCharY -= 135;
             break;
         case 39: // RIGHT
         case 68:
@@ -153,23 +181,13 @@ document.onkeydown = function (event) {
             break;
         case 40: // DOWN
         case 83:
-            if (mainCharY <= 515) mainCharY += 100;
+            if (mainCharY <= 505) mainCharY += 100;
             break;
         default:
             console.log("They key codes are not working", event.keyCode);
-    }
-};
-
-function checkStatus(){
-    console.log("Check Status being called")
-    if(score < 0){
-        alert('you lose');
-    } 
-
-    if(score > 3){
-        alert('you win');
-    }
-}
+        }
+    };
+    
 
 
 function checkContact(mainCharY, obstacleBottom, mainCharX, obstacleLeft){
@@ -206,5 +224,13 @@ function gameOver(){
     ctx.fillText("GAME OVER!", 450, 350);
 };
 
+function youWin(){
+    ctx.clearRect(0, 0, 1400, 650);
+
+    ctx.font = "70px bold Arial";
+    ctx.fillStyle = "green";
+    ctx.fillText("YOU WIN!", 500, 350);
+};
+
 drawingLoop();
-// checkStatus();
+
