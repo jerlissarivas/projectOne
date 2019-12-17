@@ -173,7 +173,7 @@ document.onkeydown = function (event) {
             break;
         case 38: // UP
         case 87:
-            if (mainCharY >= 515) mainCharY -= 135;
+            if (mainCharY >= 515) mainCharY -= 150;
             break;
         case 39: // RIGHT
         case 68:
