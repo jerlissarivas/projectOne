@@ -204,7 +204,7 @@ return mainCharY <= obstacleBottom + 50
 
 function checkCollision(obj1x, obj1y, obj2x, obj2y){
     // mainCharY + mainChar-height >= obstacleY
-return obj1y + 65  >= obj2y
+return obj1y + 60  >= obj2y
     // mainCharY <= obstacleY + obstacle-height
     && obj1y <= obj2y + 60
     // mainCharX + mainChar-width >= obstacleX
