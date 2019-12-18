@@ -36,11 +36,11 @@ function addGifts() {
 
 function drawEverything() {
 
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "black";
     ctx.font = "20px Arial";
 
     ctx.fillText("Move your player with the arrow keys or W A S D keys.", 10, 40);
-    ctx.fillText("Jump over the bomb collect the bricks and coins.", 10, 60);
+    ctx.fillText("Use the Up Arrow or W Key to jump over the bomb and collect the gifts.", 10, 60);
 
     if(giftsArray.length === 0) {
         addGifts();
