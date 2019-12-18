@@ -23,3 +23,13 @@ div {
     background-size: cover;
     padding: 40px;
 }
+
+p {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+button {
+    padding: 70px;
+    background-color: green;
+}
