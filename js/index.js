@@ -73,7 +73,6 @@ function drawEverything() {
   }
   for (let i = 0; i < giftsArray.length; i++) {
     if (checkContact(mainCharY, giftsArray[i].y, mainCharX, giftsArray[i].x)) {
-      // drawImg('brick', './images/166-1660430_brick-background-png-brick-wall-background-pattern-png.png', 150, 375, 75, 75);
       score++;
       document.getElementById("score").innerHTML = "Score: " + score;
       giftsArray.splice(i, 1);
